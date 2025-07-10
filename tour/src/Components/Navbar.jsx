@@ -20,7 +20,7 @@ const Navbar = () => {
           className="hover:text-[var(--primary-color)]"
           to={"/availablecars"}
         >
-          Available Cars
+          Available Trips
         </NavLink>
       </li>
     </>
@@ -36,19 +36,19 @@ const Navbar = () => {
       <li>
         <NavLink
           className="hover:text-[var(--primary-color)]"
-          to={"/availablecars"}
+          to={"/availabletrips"}
         >
-          Available Cars
+          Available Trips
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[var(--primary-color)]" to={"/addcars"}>
-          Add Cars
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/addtrips"}>
+          Add Trips
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[var(--primary-color)]" to={"/mycars"}>
-          My Cars
+        <NavLink className="hover:text-[var(--primary-color)]" to={"/mytrips"}>
+          My Trips
         </NavLink>
       </li>
       <li>
