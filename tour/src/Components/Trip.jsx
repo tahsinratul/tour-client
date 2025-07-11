@@ -92,7 +92,7 @@ const Trip = ({ trip }) => {
           </div>
 
           {/* CTA Button */}
-          <button className="w-full bg-gradient-to-r from-[var(--primary-color)] to-[var(--primary-400)] text-white font-semibold py-3.5 px-6 rounded-2xl shadow-lg shadow-[var(--primary-color)]/25 group-hover:shadow-xl group-hover:shadow-[var(--primary-color)]/40 transform group-hover:scale-[1.02] transition-all duration-300 ease-out">
+          <button className="btn btn-neutral btn-dash">
             <span className="flex items-center justify-center">
               View Details
               <IoIosArrowForward></IoIosArrowForward>

@@ -1,24 +1,39 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router"; // ✅ correct import
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const [myBookings, setMyBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user?.email) return;
+    const fetchBookings = async () => {
+      if (!user?.email || !user?.accessToken) return;
 
-    fetch(`http://localhost:3000/bookings?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setMyBookings(data))
-      .catch((err) => {
-        console.error(err);
+      const token = user.accessToken || user.stsTokenManager?.accessToken;
+
+      try {
+        setLoading(true);
+        const res = await fetch(`http://localhost:3000/bookings?email=${user.email}`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // ✅ Firebase token header
+          },
+        });
+
+        const data = await res.json();
+        setMyBookings(data);
+      } catch (err) {
+        console.error("Error fetching bookings:", err);
         toast.error("Failed to load your bookings.");
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBookings();
   }, [user]);
 
   const handleDelete = (id) => {
@@ -26,7 +41,10 @@ const MyBookings = () => {
     if (!confirm) return;
 
     fetch(`http://localhost:3000/bookings/${id}`, {
-      method: "DELETE"
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${user.accessToken}`, // ✅ include token here too if backend verifies it
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -48,9 +66,17 @@ const MyBookings = () => {
 
   if (!myBookings.length)
     return (
-      <p className="text-center mt-10 text-blue-600 font-bold text-2xl pb-5">
-        You have no bookings yet.
-      </p>
+      <div className="text-center mt-10 space-y-5">
+        <p className="text-blue-600 font-bold text-2xl pb-5">
+          You have no bookings yet.
+        </p>
+        <button
+          onClick={() => navigate("/availabletrips")}
+          className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition my-10"
+        >
+          Add Booking
+        </button>
+      </div>
     );
 
   return (
@@ -79,14 +105,16 @@ const MyBookings = () => {
                   <p>{booking.guide_name}</p>
                   <p className="text-xs text-gray-500">{booking.guide_email}</p>
                 </td>
-                <td className="p-3">{booking.departure_date}</td>
+                <td className="p-3">
+                  {new Date(booking.departure_date).toLocaleDateString()}
+                </td>
                 <td className="p-3">{booking.destination || "N/A"}</td>
                 <td className="p-3">{booking.notes || "None"}</td>
                 <td className="p-3 space-x-2">
-                  {/* Show Modify & Delete buttons for all bookings */}
-      <button
+                  <button
                     onClick={() => handleDelete(booking._id)}
                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                    aria-label={`Delete booking for ${booking.tour_name}`}
                   >
                     Delete
                   </button>

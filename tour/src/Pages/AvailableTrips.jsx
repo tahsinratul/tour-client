@@ -62,11 +62,11 @@ const AvailableTrips = () => {
 
   return (
     <div className="my-25 w-[90%] mx-auto font-display">
-      <title>Available trips</title>
+      <title>Tourista</title>
       <h1 className="text-6xl font-semibold text-center">Available trips</h1>
       <p className="text-center my-2 text-gray-500 ">
         All the available trips are listed below. You can book a trip by clicking
-        on the "Book Now" button.
+        on the View details button and then "Book Now" button.
       </p>
       <div className="my-8 w-full flex flex-col md:flex-row items-center justify-between bg-white p-4 rounded-2xl shadow-md">
         {/* Search Bar */}

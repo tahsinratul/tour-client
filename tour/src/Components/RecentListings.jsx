@@ -38,9 +38,9 @@ const RecentListings = () => {
         ))}
       </div>
 
-      <button onClick={() => navigate("/availabletrips")} className="bg-gradient-to-r from-[var(--primary-600)] to-[var(--primary-400)] text-white font-semibold py-3.5 px-6 rounded-2xl shadow-lg shadow-[var(--primary-color)]/25 group-hover:shadow-xl hover:shadow-[var(--primary-color)]/40 transform hover:scale-[1.02] transition-all duration-300 ease-out">
+      <button onClick={() => navigate("/availabletrips")} className="btn btn-neutral btn-dash">
                   <span className="flex items-center justify-center">
-                    View All Cars
+                    View All Trips
                     <IoIosArrowForward></IoIosArrowForward>
                   </span>
                 </button>

@@ -24,7 +24,7 @@ const TripDetails = () => {
 
   return (
     <Suspense fallback={<div className="text-center my-20 text-xl">Loading Trip details...</div>}>
-      <title>{`Triphelp | ${tour_name}`}</title>
+      <title>Tourista</title>
       <div className="w-[90%] mx-auto my-24 rounded-3xl overflow-hidden shadow-2xl relative font-display">
         <div className="relative h-[800px] w-full">
           <img src={image} alt={tour_name} className="w-full h-full object-fill md:object-cover" />
@@ -69,6 +69,7 @@ const TripDetails = () => {
         {isModalOpen && <BookingModal onClose={closeModal} Trip={trip} />}
       </div>
     </Suspense>
+    
   );
 };
 

@@ -4,6 +4,7 @@ import Logo from "../assets/logo.png";
 import { AuthContext } from "../Context/AuthContext";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
+import "./Navbar.css"
 
 const Navbar = () => {
   const { user, logOutUser } = use(AuthContext);
@@ -11,14 +12,13 @@ const Navbar = () => {
   const notLoggedInLinks = (
     <>
       <li>
-        <NavLink className="hover:text-[var(--primary-color)]" to={"/"}>
+        <NavLink className="font-bold" to={"/"}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink
-          className="hover:text-[var(--primary-color)]"
-          to={"/availablecars"}
+        <NavLink className="font-bold"
+          to={"/availabletrips"}
         >
           Available Trips
         </NavLink>
@@ -29,31 +29,29 @@ const Navbar = () => {
   const loggedInLinks = (
     <>
       <li>
-        <NavLink className="hover:text-[var(--primary-color)]" to={"/"}>
+        <NavLink className="font-bold" to={"/"}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink
-          className="hover:text-[var(--primary-color)]"
+        <NavLink className="font-bold"
           to={"/availabletrips"}
         >
           Available Trips
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[var(--primary-color)]" to={"/addtrips"}>
+        <NavLink className="font-bold" to={"/addtrips"}>
           Add Trips
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-[var(--primary-color)]" to={"/mytrips"}>
+        <NavLink className="font-bold" to={"/mytrips"}>
           My Trips
         </NavLink>
       </li>
       <li>
-        <NavLink
-          className="hover:text-[var(--primary-color)]"
+        <NavLink className="font-bold"
           to={"/mybookings"}
         >
           My Bookings

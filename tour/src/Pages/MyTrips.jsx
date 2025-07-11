@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
-import { Link } from "react-router";
+import { Link } from "react-router"; // ✅ Correct import
 
 const MyTrips = () => {
   const { user } = useContext(AuthContext);
@@ -50,13 +50,21 @@ const MyTrips = () => {
       });
   };
 
-  if (loading) return <p className="text-center mt-10">Loading your trips...</p>;
+  if (loading)
+    return <p className="text-center mt-10">Loading your trips...</p>;
 
   if (!myTrips.length)
     return (
-      <p className="text-center mt-10 text-green-600 font-bold text-2xl pb-5">
-        You have not added any trips yet.
-      </p>
+      <div className="text-center mt-10">
+        <p className="text-green-600 font-bold text-2xl mb-6">
+          You have not added any trips yet.
+        </p>
+        <Link to="/addtrips">
+          <button className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition my-10">
+            Add Your First Trip
+          </button>
+        </Link>
+      </div>
     );
 
   return (

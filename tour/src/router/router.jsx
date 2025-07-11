@@ -7,10 +7,11 @@ import LoginPage from '../Pages/LoginPage';
 import RegisterPage from '../Pages/RegisterPage';
 import AvailableTrips from '../Pages/AvailableTrips';
 import MyTrips from '../Pages/MyTrips';
-import MyBookings from '../Pages/MyBookings';
 import AddTrips from '../Pages/AddTrips';
 import TripDetails from '../Pages/TripDetails';
 import UpdateTrip from '../Pages/UpdateTrip';
+import PrivateRoute from '../Context/PrivateRoute';
+import MyBookings from '../Pages/MyBookings';
 
 const router = createBrowserRouter([
   {
@@ -36,26 +37,26 @@ const router = createBrowserRouter([
       },
       {
         path: '/addtrips',
-        Component: AddTrips 
+        element: <PrivateRoute><AddTrips></AddTrips></PrivateRoute>
       },
       {
         path: '/tripdetails/:id',
          loader: ({ params }) => fetch(`http://localhost:3000/trips/${params.id}`),
-        Component: TripDetails 
+        element: <PrivateRoute><TripDetails></TripDetails></PrivateRoute>
       },
       {
         path: '/mytrips',
         loader: ()=> fetch('http://localhost:3000/trips'),
-        Component: MyTrips
-      },
+        element: <PrivateRoute><MyTrips></MyTrips></PrivateRoute>
+      }, 
       {
         path: '/mybookings',
-        Component: MyBookings
+        element:<PrivateRoute><MyBookings></MyBookings></PrivateRoute>
       },
       {
         path: '/update/:id',
       loader: ({params})=> fetch(`http://localhost:3000/trips${params.id}`),
-        Component: UpdateTrip
+        element: <PrivateRoute><UpdateTrip></UpdateTrip></PrivateRoute>
       },
   ]
 
