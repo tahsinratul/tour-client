@@ -66,8 +66,8 @@ const MyBookings = () => {
 
   if (!myBookings.length)
     return (
-      <div className="text-center mt-10 space-y-5">
-        <p className="text-blue-600 font-bold text-2xl pb-5">
+      <div className="text-center mt-50">
+        <p className="text-slate-800 font-bold text-2xl pb-5">
           You have no bookings yet.
         </p>
         <button

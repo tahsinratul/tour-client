@@ -55,8 +55,8 @@ const MyTrips = () => {
 
   if (!myTrips.length)
     return (
-      <div className="text-center mt-10">
-        <p className="text-green-600 font-bold text-2xl mb-6">
+      <div className="text-center mt-50">
+        <p className="text-slate-800 font-bold text-2xl mb-6">
           You have not added any trips yet.
         </p>
         <Link to="/addtrips">
