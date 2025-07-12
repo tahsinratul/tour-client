@@ -12,7 +12,7 @@ const RecentListings = () => {
     const navigate = useNavigate();
   
     useEffect(() => {
-      fetch("http://localhost:3000/trips")
+      fetch("https://tour-server-beta.vercel.app/trips")
       .then((res) => res.json())
       .then((data) => {
         console.log(data, Array.isArray(data));

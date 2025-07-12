@@ -79,33 +79,19 @@ const AvailableTrips = () => {
           />
           <button
             type="submit"
-            className="px-5 py-2 bg-[var(--primary-color)] text-white rounded-full hover:bg-opacity-90 transition duration-200"
+            className="btn btn-neutral btn-dash rounded-3xl"
           >
             Search
           </button>
         </form>
 
-        {/* Filter Buttons */}
-        <div className="mt-4 md:mt-0">
-          <select
-            onChange={handleSorting}
-            value={sortOption}
-            className="px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
-          >
-            <option value="">Sort By</option>
-            <option value="date-newest">Date Added: Newest First</option>
-            <option value="date-oldest">Date Added: Oldest First</option>
-            <option value="price-lowest">Price: Lowest First</option>
-            <option value="price-highest">Price: Highest First</option>
-          </select>
-        </div>
 
         {/* Toggle Buttons */}
         <div className="flex gap-3 mt-4 md:mt-0">
           <button
             onClick={() => setViewMode("grid")}
-            className={`p-3 rounded-full border transition hover:bg-gray-100 ${
-              viewMode === "grid" ? "bg-[var(--primary-color)] text-white" : "text-gray-600"
+            className={`p-3 rounded-full border transition hover:bg-slate-300 ${
+              viewMode === "grid" ? "bg-slate-800 text-white" : "text-black"
             }`}
             title="Grid View"
           >
@@ -113,8 +99,8 @@ const AvailableTrips = () => {
           </button>
           <button
             onClick={() => setViewMode("list")}
-            className={`p-3 rounded-full border transition hover:bg-gray-100 ${
-              viewMode === "list" ? "bg-[var(--primary-color)] text-white" : "text-gray-600"
+            className={`p-3 rounded-full border transition hover:bg-slate-300 ${
+              viewMode === "list" ? "bg-slate-800 text-white" : "text-black"
             }`}
             title="List View"
           >

@@ -25,7 +25,7 @@ const BookingModal = ({ onClose, Trip }) => {
       status: "pending"
     };
 
-    fetch("http://localhost:3000/bookings", {
+    fetch("https://tour-server-beta.vercel.app/bookings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bookingData)

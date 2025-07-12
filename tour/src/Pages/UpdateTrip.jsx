@@ -8,7 +8,7 @@ const UpdateTrip = () => {
   const [trip, setTrip] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/trips/${id}`)
+    fetch(`https://tour-server-beta.vercel.app/trips/${id}`)
       .then(res => res.json())
       .then(data => setTrip(data))
       .catch(err => console.error("Failed to load trip:", err));
@@ -19,7 +19,7 @@ const UpdateTrip = () => {
     const form = e.target;
     const updatedTrip = Object.fromEntries(new FormData(form).entries());
 
-    fetch(`http://localhost:3000/trips/${id}`, {
+    fetch(`https://tour-server-beta.vercel.app/trips/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTrip),

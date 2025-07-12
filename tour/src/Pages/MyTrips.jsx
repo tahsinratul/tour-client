@@ -15,7 +15,7 @@ const MyTrips = () => {
       return;
     }
 
-    fetch("http://localhost:3000/trips")
+    fetch("https://tour-server-beta.vercel.app/trips")
       .then((res) => res.json())
       .then((data) => {
         const filtered = data.filter((trip) => trip.guide_email === user.email);
@@ -32,7 +32,7 @@ const MyTrips = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this trip?");
     if (!confirmDelete) return;
 
-    fetch(`http://localhost:3000/trips/${id}`, {
+    fetch(`https://tour-server-beta.vercel.app/trips/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

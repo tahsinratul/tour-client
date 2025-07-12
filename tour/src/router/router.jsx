@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/availabletrips',
-         loader: ()=> fetch('http://localhost:3000/trips'),
+         loader: ()=> fetch('https://tour-server-beta.vercel.app/trips'),
         Component: AvailableTrips
       },
       {
@@ -41,12 +41,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/tripdetails/:id',
-         loader: ({ params }) => fetch(`http://localhost:3000/trips/${params.id}`),
+         loader: ({ params }) => fetch(`https://tour-server-beta.vercel.app/trips/${params.id}`),
         element: <PrivateRoute><TripDetails></TripDetails></PrivateRoute>
       },
       {
         path: '/mytrips',
-        loader: ()=> fetch('http://localhost:3000/trips'),
+        loader: ()=> fetch('https://tour-server-beta.vercel.app/trips'),
         element: <PrivateRoute><MyTrips></MyTrips></PrivateRoute>
       }, 
       {
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/update/:id',
-      loader: ({params})=> fetch(`http://localhost:3000/trips${params.id}`),
+      loader: ({params})=> fetch(`https://tour-server-beta.vercel.app/trips${params.id}`),
         element: <PrivateRoute><UpdateTrip></UpdateTrip></PrivateRoute>
       },
   ]

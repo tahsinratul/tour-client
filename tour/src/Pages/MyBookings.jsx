@@ -17,7 +17,7 @@ const MyBookings = () => {
 
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:3000/bookings?email=${user.email}`, {
+        const res = await fetch(`https://tour-server-beta.vercel.app/bookings?email=${user.email}`, {
           headers: {
             Authorization: `Bearer ${token}`, // ✅ Firebase token header
           },
@@ -40,7 +40,7 @@ const MyBookings = () => {
     const confirm = window.confirm("Are you sure you want to cancel this booking?");
     if (!confirm) return;
 
-    fetch(`http://localhost:3000/bookings/${id}`, {
+    fetch(`https://tour-server-beta.vercel.app/bookings/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.accessToken}`, // ✅ include token here too if backend verifies it
@@ -87,41 +87,52 @@ const MyBookings = () => {
 
       <div className="overflow-x-auto rounded-md shadow">
         <table className="min-w-full bg-white text-sm text-left">
-          <thead className="bg-slate-900 text-white">
-            <tr>
-              <th className="p-3">Tour Name</th>
-              <th className="p-3">Guide</th>
-              <th className="p-3">Departure</th>
-              <th className="p-3">Destination</th>
-              <th className="p-3">Notes</th>
-              <th className="p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myBookings.map((booking) => (
-              <tr key={booking._id} className="border-b hover:bg-gray-50">
-                <td className="p-3 font-medium">{booking.tour_name}</td>
-                <td className="p-3">
-                  <p>{booking.guide_name}</p>
-                  <p className="text-xs text-gray-500">{booking.guide_email}</p>
-                </td>
-                <td className="p-3">
-                  {new Date(booking.departure_date).toLocaleDateString()}
-                </td>
-                <td className="p-3">{booking.destination || "N/A"}</td>
-                <td className="p-3">{booking.notes || "None"}</td>
-                <td className="p-3 space-x-2">
-                  <button
-                    onClick={() => handleDelete(booking._id)}
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                    aria-label={`Delete booking for ${booking.tour_name}`}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+         <thead className="bg-slate-900 text-white">
+  <tr>
+    <th className="p-3">Tour Name</th>
+    <th className="p-3">Buyer</th>
+    <th className="p-3">Booking Date</th>
+    <th className="p-3">Notes</th>
+    <th className="p-3">Status</th> {/* ✅ Added */}
+    <th className="p-3">Actions</th>
+  </tr>
+</thead>
+<tbody>
+  {myBookings.map((booking) => (
+    <tr key={booking._id} className="border-b hover:bg-gray-50">
+      <td className="p-3 font-medium">{booking.tour_name}</td>
+      <td className="p-3">
+        <p>{booking.buyer_name}</p>
+        <p className="text-xs text-gray-500">{booking.buyer_email}</p>
+      </td>
+      <td className="p-3">{new Date(booking.booking_date).toLocaleDateString()}</td>
+      <td className="p-3">{booking.notes || "None"}</td>
+
+      {/* ✅ Status column */}
+      <td className="p-3">
+        <span
+          className={`px-2 py-1 text-xs rounded-full font-semibold ${
+            booking.status === "completed"
+              ? "bg-green-100 text-green-800"
+              : "bg-yellow-100 text-yellow-800"
+          }`}
+        >
+          {booking.status || "pending"}
+        </span>
+      </td>
+
+      <td className="p-3 space-x-2">
+        <button
+          onClick={() => handleDelete(booking._id)}
+          className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
         </table>
       </div>
     </div>

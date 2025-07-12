@@ -16,7 +16,7 @@ const AddTrips = () => {
   newTrip.guide_photo = user.photoURL;
 
   // Send to backend
-  fetch("http://localhost:3000/trips", {
+  fetch("https://tour-server-beta.vercel.app/trips", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -74,7 +74,7 @@ const AddTrips = () => {
         <textarea name="package_details"  placeholder="Package Details" rows="4" className="border p-2 rounded" required></textarea>
         <input name="contact_no" placeholder="Guide Contact No." className="border p-2 rounded" required />
 
-        <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Add Package</button>
+        <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Add Trip</button>
       </form>
     </div>
   );

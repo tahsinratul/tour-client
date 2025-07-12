@@ -29,7 +29,7 @@ const TripDetails = () => {
         <div className="relative h-[800px] w-full">
           <img src={image} alt={tour_name} className="w-full h-full object-fill md:object-cover" />
 
-          <div className="absolute bottom-0 w-full bg-[var(--primary-50)]/50 backdrop-blur-md px-6 py-6 md:py-8 flex flex-col gap-4">
+          <div className="absolute bottom-0 w-full  bg-white px-6 py-6 md:py-8 flex flex-col gap-4">
             <div>
               {duration ? (
                 <span className="text-sm font-medium px-3 py-1 rounded-full bg-green-100 text-green-800">Available</span>
@@ -38,27 +38,20 @@ const TripDetails = () => {
               )}
             </div>
 
-            <div className="flex items-center justify-between bg-[var(--primary-50)] rounded-full px-4 py-2">
+            <div className="flex items-center justify-between bg-[var(--primary-50)] rounded-full py-2">
               <h1 className="text-lg md:text-4xl font-medium text-gray-900">{tour_name}</h1>
-              <span className="text-3xl font-bold text-[var(--primary-color)]">${price}</span>
+              <span className="text-3xl font-bold text-[var(--primary-color)]">{price}</span>
             </div>
 
             <p className="text-[var(--primary-900)] text-sm md:text-base flex items-center gap-1">
-              <span className="font-semibold text-lg text-[var(--primary-950)]">About the Trip:</span> {destination}
+              <span className="font-semibold text-lg text-[var(--primary-950)]">About the Trip:</span> {package_details}
             </p>
 
-            <div className="flex flex-wrap gap-2">
-              {detailsArray?.map((detail, i) => (
-                <span key={i} className="px-3 py-1 text-sm bg-[var(--primary-100)] text-[var(--primary-800)] rounded-full shadow-sm">
-                  {detail.toUpperCase()}
-                </span>
-              ))}
-            </div>
 
             {duration && (
               <button
                 onClick={handleBooking}
-                className="mt-4 w-max px-6 py-2 rounded-full bg-[var(--primary-color)] text-white font-semibold hover:scale-105 transition-transform duration-300 shadow-md"
+                className="btn btn-neutral btn-dash w-2/12"
               >
                 Book Now
               </button>
