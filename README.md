@@ -1,4 +1,4 @@
-# 🛡 Tour Package Management Platform
+#  Tour Package Management Platform
 
 A modern, full-featured web platform for managing tours, built using the MERN Stack with Firebase Authentication and Stripe Integration.
 
