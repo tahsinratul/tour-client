@@ -17,6 +17,8 @@ const AboutUs = () => {
   }
 
   return (
+    <div>
+      <title>Tourista | About</title>
     <div className="bg-slate-50 text-slate-900 mt-20 font-sans">
       {/* Mission & Vision */}
       <div className="max-w-6xl mx-auto py-16 px-8 grid md:grid-cols-2 gap-16">
@@ -175,7 +177,7 @@ const AboutUs = () => {
           }
         `}
       </style>
-    </div>
+    </div></div>
   );
 };
 

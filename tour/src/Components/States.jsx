@@ -2,7 +2,7 @@ import { div } from 'framer-motion/client';
 import React from 'react';
 
 const States = () => {
-    return (<>
+    return (<div className='mb-30'>
     <h1 className='text-center text-6xl font-bold'>Our States</h1>
     <p className='text-center text-xl my-5'>People gave us their best response, and we are very much proud of it.</p>
     
@@ -71,7 +71,7 @@ const States = () => {
     <div className="stat-desc font-bold">↘︎ 90 (14%)</div>
   </div>
 </div>
-        </div></>
+        </div></div>
     );
 };
 

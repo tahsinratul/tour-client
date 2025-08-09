@@ -42,6 +42,8 @@ const AvailableTrips = () => {
    if (loading) return <Loader></Loader>;
 
   return (
+    <div>
+      <title>Tourista | Trips</title>
     <div className="my-25 w-[90%] mx-auto font-display">
       <h1 className="text-6xl font-semibold text-center">Available trips</h1>
       <p className="text-center my-2 text-gray-500 ">
@@ -107,7 +109,7 @@ const AvailableTrips = () => {
       ) : (
         <h1 className="text-2xl font-semibold text-center">No trips Available</h1>
       )}
-    </div>
+    </div></div>
   );
 };
 

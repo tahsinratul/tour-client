@@ -1,9 +1,23 @@
-import React, { Suspense, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import BookingModal from "../Components/BookingModal";
+import Loader from "../Components/Loader";
 
 const TripDetails = () => {
   const trip = useLoaderData();
+  const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading delay to show loader on navigation
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, [trip]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   const {
     tour_name,
     image,
@@ -13,8 +27,6 @@ const TripDetails = () => {
     package_details
   } = trip;
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleBooking = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -23,13 +35,13 @@ const TripDetails = () => {
     : package_details?.split(",").map(item => item.trim());
 
   return (
-    <Suspense fallback={<div className="text-center my-20 text-xl">Loading Trip details...</div>}>
-      <title>Tourista</title>
+    <>
+      <title>Tourista | Details</title>
       <div className="w-[90%] mx-auto my-24 rounded-3xl overflow-hidden shadow-2xl relative font-display">
         <div className="relative h-[800px] w-full">
           <img src={image} alt={tour_name} className="w-full h-full object-fill md:object-cover" />
 
-          <div className="absolute bottom-0 w-full  bg-white px-6 py-6 md:py-8 flex flex-col gap-4">
+          <div className="absolute bottom-0 w-full bg-white px-6 py-6 md:py-8 flex flex-col gap-4">
             <div>
               {duration ? (
                 <span className="text-sm font-medium px-3 py-1 rounded-full bg-green-100 text-green-800">Available</span>
@@ -47,7 +59,6 @@ const TripDetails = () => {
               <span className="font-semibold text-lg text-[var(--primary-950)]">About the Trip:</span> {package_details}
             </p>
 
-
             {duration && (
               <button
                 onClick={handleBooking}
@@ -61,8 +72,7 @@ const TripDetails = () => {
 
         {isModalOpen && <BookingModal onClose={closeModal} Trip={trip} />}
       </div>
-    </Suspense>
-    
+    </>
   );
 };
 

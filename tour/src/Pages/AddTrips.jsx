@@ -1,6 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import Swal from "sweetalert2";
+import Loader from "../Components/Loader"; // adjust path if needed
 import {
   FaHiking,
   FaImage,
@@ -15,6 +17,14 @@ import {
 
 const AddTrips = () => {
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  // Simulate navigation load delay
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 800); // 0.8s delay
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleAddTrip = (e) => {
     e.preventDefault();
@@ -39,8 +49,10 @@ const AddTrips = () => {
             text: "Trip added successfully.",
             icon: "success",
             confirmButtonText: "OK",
+          }).then(() => {
+            form.reset();
+            navigate("/mytrips"); // Navigate to MyTrips page after OK
           });
-          form.reset();
         }
       })
       .catch((err) => {
@@ -53,8 +65,14 @@ const AddTrips = () => {
       });
   };
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <div className="w-11/12 lg:w-7/12 mx-auto my-10 p-6 bg-slate-50 rounded-xl shadow-lg mt-20">
+    <div>
+      <title>Tourista | AddTrip</title>
+    <div className="w-11/12 lg:w-7/12 mx-auto my-10 p-6 mt-22">
       <h1 className="text-3xl font-extrabold mb-8 text-center text-slate-800">
         Add a New Tour Package
       </h1>
@@ -68,7 +86,9 @@ const AddTrips = () => {
           title={user?.displayName || "Guide"}
         />
         <div>
-          <p className="font-semibold text-slate-900">Guide: {user?.displayName || "Unknown"}</p>
+          <p className="font-semibold text-slate-900">
+            Guide: {user?.displayName || "Unknown"}
+          </p>
           <p className="text-sm text-slate-600">{user?.email || "No Email"}</p>
         </div>
       </div>
@@ -226,12 +246,12 @@ const AddTrips = () => {
         {/* Submit Button (full width) */}
         <button
           type="submit"
-          className="bg-slate-700 text-white py-2 rounded hover:bg-slate-900 transition md:col-span-2 font-semibold text-sm"
+          className="bg-slate-800 text-white py-2 rounded hover:bg-slate-700 transition md:col-span-2 font-semibold text-sm"
         >
           Add Trip
         </button>
       </form>
-    </div>
+    </div></div>
   );
 };
 

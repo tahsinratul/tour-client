@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
-import { Link } from "react-router"; // ✅ Correct import
+import { Link } from "react-router";
+import Loader from "../Components/Loader";
+import { FaPlusCircle, FaMapMarkedAlt } from "react-icons/fa";
+import { div } from "framer-motion/client";
 
 const MyTrips = () => {
   const { user } = useContext(AuthContext);
@@ -18,19 +21,17 @@ const MyTrips = () => {
     fetch("https://tour-server-beta.vercel.app/trips")
       .then((res) => res.json())
       .then((data) => {
-        const filtered = data.filter((trip) => trip.guide_email === user.email);
+        const filtered = data.filter(
+          (trip) => trip.guide_email === user.email
+        );
         setMyTrips(filtered);
       })
-      .catch((err) => {
-        toast.error("Failed to load your trips.");
-        console.error(err);
-      })
+      .catch(() => toast.error("Failed to load your trips."))
       .finally(() => setLoading(false));
   }, [user]);
 
   const handleDelete = (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this trip?");
-    if (!confirmDelete) return;
+    if (!window.confirm("Are you sure you want to delete this trip?")) return;
 
     fetch(`https://tour-server-beta.vercel.app/trips/${id}`, {
       method: "DELETE",
@@ -44,27 +45,31 @@ const MyTrips = () => {
           toast.error("Failed to delete trip.");
         }
       })
-      .catch((error) => {
-        toast.error("Error deleting trip.");
-        console.error(error);
-      });
+      .catch(() => toast.error("Error deleting trip."));
   };
 
-  if (loading)
-    return <p className="text-center mt-10">Loading your trips...</p>;
+  if (loading) return <Loader />;
 
   if (!myTrips.length)
     return (
-      <div className="text-center mt-50">
-        <p className="text-slate-800 font-bold text-2xl mb-6">
-          You have not added any trips yet.
+  <div>
+    <title>Tourista | MyTrip</title>
+      <div className="flex flex-col items-center justify-center min-h-[70vh] gap-6 text-center px-4">
+        <FaMapMarkedAlt className="text-6xl text-slate-800 animate-bounce" />
+        <h2 className="text-3xl font-extrabold text-slate-800">
+          No Trips Found
+        </h2>
+        <p className="text-gray-600 max-w-md">
+          You haven’t added any tour packages yet. Start by adding your first
+          trip to attract travelers.
         </p>
         <Link to="/addtrips">
-          <button className="bg-slate-800 text-white px-4 py-2 rounded hover:bg-slate-700 transition my-10">
+          <button className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg shadow-lg transition transform hover:scale-105">
+            <FaPlusCircle size={20} />
             Add Your First Trip
           </button>
         </Link>
-      </div>
+      </div></div>
     );
 
   return (
@@ -97,16 +102,18 @@ const MyTrips = () => {
                 <td className="p-3 font-medium">{trip.tour_name}</td>
                 <td className="p-3">{trip.destination}</td>
                 <td className="p-3">{trip.departure_location}</td>
-                <td className="p-3">{trip.price}</td>
+                <td className="p-3 font-semibold">
+                  ${Number(trip.price).toLocaleString()}
+                </td>
                 <td className="p-3 space-x-2">
                   <Link to={`/update/${trip._id}`}>
-                    <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                    <button className="bg-slate-800 text-white px-3 py-1 rounded hover:bg-slate-600 transition">
                       Edit
                     </button>
                   </Link>
                   <button
                     onClick={() => handleDelete(trip._id)}
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                    className="bg-slate-600 text-white px-3 py-1 rounded hover:bg-slate-800 transition"
                   >
                     Delete
                   </button>

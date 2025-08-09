@@ -44,6 +44,7 @@ const LoginPage = () => {
 
   return (
     <div>
+      <title>Tourista | Login</title>
       <div className="hero my-20">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
