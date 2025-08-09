@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email,password);
     }
 
-    const loginUserIwthGoogle = (provider) => {
+    const loginUserWithGoogle = (provider) => {
         return signInWithPopup(auth,provider);
     }
 
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
         loginUser,
         logOutUser,
         loading,
-        loginUserIwthGoogle
+        loginUserWithGoogle
     }
     return (
         <AuthContext value={userInfo}>

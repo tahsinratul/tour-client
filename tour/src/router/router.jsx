@@ -12,6 +12,7 @@ import TripDetails from '../Pages/TripDetails';
 import UpdateTrip from '../Pages/UpdateTrip';
 import PrivateRoute from '../Context/PrivateRoute';
 import MyBookings from '../Pages/MyBookings';
+import AboutUs from '../Pages/AboutUs';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         Component: RegisterPage
+      },
+      {
+        path: '/aboutus',
+        Component: AboutUs
       },
       {
         path: '/availabletrips',

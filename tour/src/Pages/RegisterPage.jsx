@@ -6,13 +6,13 @@ import { getAuth, updateProfile, GoogleAuthProvider } from "firebase/auth";
 import { toast } from "react-toastify";
 
 const RegisterPage = () => {
-  const { createUser, loginUserIwthGoogle } = useContext(AuthContext);
+  const { createUser, loginUserWithGoogle } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
 
-  const loginUserWithGoogle = () => {
-    loginUserIwthGoogle(googleProvider)
+  const loginUserGoogle = () => {
+    loginUserWithGoogle(googleProvider)
       .then((result) => {
         const user = result.user;
         setTimeout(() => {
@@ -97,7 +97,7 @@ const RegisterPage = () => {
 
               <div className="divider text-white">OR</div>
 
-              <button onClick={loginUserWithGoogle} className="btn items-center w-80">
+              <button onClick={loginUserGoogle} className="btn items-center w-80">
                 <FaGoogle className="mr-2" /> Sign in with Google
               </button>
             </div>

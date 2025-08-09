@@ -23,6 +23,13 @@ const Navbar = () => {
           Available Trips
         </NavLink>
       </li>
+       <li>
+        <NavLink className="font-bold"
+          to={"/aboutus"}
+        >
+          About Us
+        </NavLink>
+      </li>
     </>
   );
 

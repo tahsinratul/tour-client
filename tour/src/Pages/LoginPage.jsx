@@ -8,12 +8,12 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { loginUser, loginUserIwthGoogle } = useContext(AuthContext); // ✅ FIXED
+  const { loginUser, loginUserWithGoogle } = useContext(AuthContext); // ✅ FIXED
 
   const googleProvider = new GoogleAuthProvider();
 
-  const loginwithGoogle = () => {
-    loginUserIwthGoogle(googleProvider)
+  const loginWithGoogle = () => {
+    loginUserWithGoogle(googleProvider)
       .then((result) => {
         const user = result.user;
         setTimeout(() => {
@@ -82,7 +82,7 @@ const LoginPage = () => {
                 </Link>
               </p>
               <div className="divider text-white">OR</div>
-              <button onClick={loginwithGoogle} className="btn items-center w-80">
+              <button onClick={loginWithGoogle} className="btn items-center w-80">
                 <FaGoogle className="mr-2" /> Sign in with Google
               </button>
             </div>
