@@ -3,6 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
 import { Link, useLocation, useNavigate } from "react-router"; // ✅ use 'react-router-dom'
 import { AuthContext } from "../Context/AuthContext";
+import Loader from "../Components/Loader";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -43,7 +44,6 @@ const LoginPage = () => {
 
   return (
     <div>
-      <title>Tourista | Login</title>
       <div className="hero my-20">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">

@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaUsers, FaGlobe, FaLeaf, FaHandshake } from "react-icons/fa";
 import { MdOutlineTravelExplore } from "react-icons/md";
+import Loader from "../Components/Loader";  // <-- Import your Loader component
 
 const AboutUs = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay of 1.5 seconds (adjust as needed)
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div className="bg-slate-50 text-slate-900 mt-20 font-sans">
       {/* Mission & Vision */}
@@ -128,6 +141,7 @@ const AboutUs = () => {
                   <img
                     src={member.img}
                     alt={member.name}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>

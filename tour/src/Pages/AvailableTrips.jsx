@@ -1,42 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLoaderData } from "react-router";
 import { FaList } from "react-icons/fa";
 import { IoGrid } from "react-icons/io5";
 import Trip from "../Components/Trip";
+import Loader from "../Components/Loader";
 
 const AvailableTrips = () => {
   const data = useLoaderData();
+
   const [viewMode, setViewMode] = useState("grid");
   const [sortOption, setSortOption] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [allTrips, setAllTrips] = useState(data);
-  const [filteredTrips, setFilteredTrips] = useState(data);
+  const [loading, setLoading] = useState(true);
+  const [allTrips, setAllTrips] = useState([]);
+  const [filteredTrips, setFilteredTrips] = useState([]);
 
-  const handleSorting = (e) => {
-    const option = e.target.value;
-    setSortOption(option);
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setAllTrips(data);
+      setFilteredTrips(data);
+      setLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [data]);
 
-    let sorted = [...filteredTrips];
-
-    switch (option) {
-      case "date-newest":
-        sorted.sort((a, b) => new Date(b.addDate) - new Date(a.addDate));
-        break;
-      case "date-oldest":
-        sorted.sort((a, b) => new Date(a.addDate) - new Date(b.addDate));
-        break;
-      case "price-lowest":
-        sorted.sort((a, b) => a.price - b.price);
-        break;
-      case "price-highest":
-        sorted.sort((a, b) => b.price - a.price);
-        break;
-      default:
-        sorted = [...allTrips];
-    }
-
-    setFilteredTrips(sorted);
-  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -51,18 +38,11 @@ const AvailableTrips = () => {
     setFilteredTrips(results);
     e.target.reset();
   };
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center my-10">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-gray-800"></div>
-      </div>
-    );
-  }
+  
+   if (loading) return <Loader></Loader>;
 
   return (
     <div className="my-25 w-[90%] mx-auto font-display">
-      <title>Tourista</title>
       <h1 className="text-6xl font-semibold text-center">Available trips</h1>
       <p className="text-center my-2 text-gray-500 ">
         All the available trips are listed below. You can book a trip by clicking
@@ -85,6 +65,7 @@ const AvailableTrips = () => {
           </button>
         </form>
 
+    
 
         {/* Toggle Buttons */}
         <div className="flex gap-3 mt-4 md:mt-0">
