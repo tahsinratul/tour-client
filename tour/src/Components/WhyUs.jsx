@@ -67,7 +67,7 @@ const FeatureCard = ({ feature }) => {
 
   return (
     <div
-      className={`relative flex flex-col items-center gap-4 py-8 px-6 rounded-2xl border-4 cursor-pointer transform transition-transform duration-300 hover:scale-105 ${feature.bg} border ${feature.borderColor} shadow-lg`}
+      className={`relative flex flex-col items-center gap-4 py-8 px-6 rounded-2xl cursor-pointer transform transition-transform duration-300 hover:scale-105 ${feature.bg} shadow-lg`}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
       onFocus={() => setShowTooltip(true)}

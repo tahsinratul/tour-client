@@ -44,7 +44,7 @@ const StatCard = ({ step, index }) => {
 
   return (
     <motion.div
-      className="relative bg-white rounded-3xl p-8 flex flex-col items-center border-4 border-slate-900 cursor-pointer shadow-sm"
+      className="relative bg-white rounded-3xl p-8 flex flex-col items-center cursor-pointer shadow-sm"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.07, boxShadow: "0 15px 30px rgba(0,0,0,0.2)" }}

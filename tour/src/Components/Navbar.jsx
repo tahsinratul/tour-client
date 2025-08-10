@@ -69,7 +69,7 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-center items-center font-display">
-      <div className="mx-auto w-[90%] fixed top-5 z-50  flex justify-between rounded-2xl items-center text-base font-normal py-1 px-2 bg-white border-4 border-slate-900">
+      <div className="mx-auto w-[90%] fixed top-5 z-50  flex justify-between rounded-2xl items-center text-base font-normal py-1 px-2 bg-white shadow-slate-700 shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

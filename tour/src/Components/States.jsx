@@ -77,7 +77,7 @@ const States = () => {
         People gave us their best response, and we are very much proud of it.
       </p>
 
-      <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center sm:justify-around gap-12 bg-white border-4 border-slate-900 rounded-3xl shadow-xl py-12 px-6 sm:px-10">
+      <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center sm:justify-around gap-12 bg-white rounded-3xl shadow-xl py-12 px-6 sm:px-10">
         <StatItem
           icon={<FiDownload size={48} />}
           title="Downloads"

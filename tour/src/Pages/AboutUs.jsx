@@ -52,7 +52,7 @@ const cards = [
 const Card = ({ icon, title, description, tooltip }) => (
   <div
     tabIndex={0}
-    className="relative group bg-white rounded-2xl shadow-md p-6 cursor-default border border-slate-300 hover:shadow-lg transition-shadow duration-300"
+    className="relative group bg-white rounded-2xl shadow-md p-6 cursor-default hover:shadow-lg transition-shadow duration-300"
     aria-describedby={`tooltip-${title.replace(/\s+/g, "")}`}
   >
     <div className="mb-4">{icon}</div>
