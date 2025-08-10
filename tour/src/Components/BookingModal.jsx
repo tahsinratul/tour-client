@@ -62,7 +62,7 @@ const BookingModal = ({ onClose, Trip }) => {
           <input type="email" value={user.email} disabled className="w-full border px-3 py-2 rounded bg-gray-100" />
           <input type="text" value={Trip.price} disabled className="w-full border px-3 py-2 rounded bg-gray-100" />
           <textarea name="notes" placeholder="Special Note (optional)" className="w-full border px-3 py-2 rounded" />
-          <button type="submit" className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+          <button type="submit" className="bg-slate-800 text-white px-6 py-2 rounded hover:bg-slate-700">
             Confirm Booking
           </button>
         </form>

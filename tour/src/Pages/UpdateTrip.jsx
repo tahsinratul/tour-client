@@ -82,7 +82,7 @@ const UpdateTrip = () => {
   }
 
   return (
-    <div className="w-11/12 lg:w-7/12 mx-auto my-10 p-6 mt-22">
+    <div className="w-11/12 lg:w-7/12 mx-auto my-10 p-6 mt-25 bg-white rounded-3xl">
       <h1 className="text-3xl font-extrabold mb-8 text-center text-slate-800">
         Update Tour Package
       </h1>
