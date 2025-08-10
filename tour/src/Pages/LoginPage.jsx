@@ -1,28 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
-import { Link, useLocation, useNavigate } from "react-router"; // ✅ use 'react-router-dom'
+import { Link, useLocation, useNavigate } from "react-router"; // fixed import
 import { AuthContext } from "../Context/AuthContext";
-import Loader from "../Components/Loader";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const { loginUser, loginUserWithGoogle } = useContext(AuthContext); // ✅ FIXED
-
+  const { loginUser, loginUserWithGoogle } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
+
+  useEffect(() => {
+    document.title = "Tourista | Login";
+  }, []);
 
   const loginWithGoogle = () => {
     loginUserWithGoogle(googleProvider)
-      .then((result) => {
-        const user = result.user;
+      .then(() => {
+        toast.success("Google login successful!");
         setTimeout(() => {
           navigate(location.state?.from?.pathname || "/");
         }, 1000);
       })
       .catch((error) => {
-        console.error("Google login error:", error);
+        toast.error(error.message);
       });
   };
 
@@ -32,19 +34,19 @@ const LoginPage = () => {
     const password = e.target.password.value;
 
     loginUser(email, password)
-      .then((result) => {
+      .then(() => {
+        toast.success("Login successful!");
         setTimeout(() => {
           navigate(location.state?.from?.pathname || "/");
-        }, 1000); // ✅ add delay for better user experience
+        }, 1000);
       })
       .catch((error) => {
-        console.error("Login error:", error.message);
+        toast.error(error.message);
       });
   };
 
   return (
-    <div>
-      <title>Tourista | Login</title>
+    <main>
       <div className="hero my-20">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">
@@ -69,7 +71,11 @@ const LoginPage = () => {
                   placeholder="Password"
                   required
                 />
-                <button type="submit" className="btn items-center mt-4 w-80">
+                <button
+                  type="submit"
+                  className="btn items-center mt-4 w-80"
+                  aria-label="Login with Email and Password"
+                >
                   Login
                 </button>
               </form>
@@ -83,14 +89,18 @@ const LoginPage = () => {
                 </Link>
               </p>
               <div className="divider text-white">OR</div>
-              <button onClick={loginWithGoogle} className="btn items-center w-80">
+              <button
+                onClick={loginWithGoogle}
+                className="btn items-center w-80"
+                aria-label="Sign in with Google"
+              >
                 <FaGoogle className="mr-2" /> Sign in with Google
               </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

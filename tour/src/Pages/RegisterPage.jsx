@@ -11,19 +11,18 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
 
-  const loginUserGoogle = () => {
-    loginUserWithGoogle(googleProvider)
-      .then((result) => {
-        const user = result.user;
-        setTimeout(() => {
-          navigate(location.state?.from?.pathname || "/");
-        }, 1000);
-      })
-      .catch((error) => {
-        console.error("Google login error:", error);
-        toast.error("Google login failed");
-      });
-  };
+ const loginUserGoogle = () => {
+     loginUserWithGoogle(googleProvider)
+       .then(() => {
+         toast.success("Google login successful!");
+         setTimeout(() => {
+           navigate(location.state?.from?.pathname || "/");
+         }, 1000);
+       })
+       .catch((error) => {
+         toast.error(error.message);
+       });
+   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
