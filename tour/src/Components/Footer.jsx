@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, } from "react-icons/fa";
+import { FaFacebookF, FaGithub,  FaLinkedinIn, } from "react-icons/fa";
 import Logo from "../assets/logo.png"
 
 const Footer = () => {
@@ -40,13 +40,13 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Follow Us</h3>
           <div className="flex space-x-4 mb-4">
-            <a href="https://www.facebook.com/tahsinfahim.ratul/" target="_blank" className="bg-[#00BFFF] hover:bg-[#0099CC] p-2 rounded-full transition">
+            <a href="https://www.facebook.com/tahsinfahim.ratul/" target="_blank" className="bg-slate-600 hover:bg-slate-700 p-2 rounded-full transition">
               <FaFacebookF />
             </a>
-            <a href="https://x.com/?lang=en" target="_blank" className="bg-[#00BFFF] hover:bg-[#0099CC] p-2 rounded-full transition">
-              <FaTwitter />
+            <a href="https://github.com/tahsinratul" target="_blank" className="bg-slate-600 hover:bg-slate-700 p-2 rounded-full transition">
+              <FaGithub />
             </a>
-            <a href="https://www.linkedin.com/in/tahsin-fahim-ratul/" target="_blank" className="bg-[#00BFFF] hover:bg-[#0099CC] p-2 rounded-full transition">
+            <a href="https://www.linkedin.com/in/tahsin-fahim-ratul/" target="_blank" className="bg-slate-600 hover:bg-slate-700 p-2 rounded-full transition">
               <FaLinkedinIn />
             </a>
           </div>
