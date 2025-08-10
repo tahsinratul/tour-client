@@ -20,8 +20,8 @@ const HomePage = () => {
   return (
     <div>
       <Hero />
-      <WhyUS />
       <RecentListings />
+      <WhyUS />
       <HowItWorks />
       <States />
     </div>
