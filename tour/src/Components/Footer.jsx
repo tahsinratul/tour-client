@@ -18,10 +18,10 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Company</h3>
           <ul className="space-y-2 text-white">
-            <li><a href="#" className="hover:text-white transition">About Us</a></li>
-            <li><a href="#" className="hover:text-white transition">Careers</a></li>
-            <li><a href="#" className="hover:text-white transition">Blog</a></li>
-            <li><a href="#" className="hover:text-white transition">Contact</a></li>
+            <li><a  className="hover:text-white transition">About Us</a></li>
+            <li><a  className="hover:text-white transition">Careers</a></li>
+            <li><a  className="hover:text-white transition">Blog</a></li>
+            <li><a  className="hover:text-white transition">Contact</a></li>
           </ul>
         </div>
 
@@ -29,10 +29,10 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Services</h3>
           <ul className="space-y-2 text-white">
-            <li><a href="#" className="hover:text-white transition">Tour Package</a></li>
-            <li><a href="#" className="hover:text-white transition">Luxury Tour</a></li>
-            <li><a href="#" className="hover:text-white transition">Airport Pickup</a></li>
-            <li><a href="#" className="hover:text-white transition">Deals & Offers</a></li>
+            <li><a className="hover:text-white transition">Tour Package</a></li>
+            <li><a className="hover:text-white transition">Luxury Tour</a></li>
+            <li><a  className="hover:text-white transition">Airport Pickup</a></li>
+            <li><a  className="hover:text-white transition">Deals & Offers</a></li>
           </ul>
         </div>
 
