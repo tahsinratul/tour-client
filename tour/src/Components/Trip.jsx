@@ -9,17 +9,13 @@ const Trip = ({ trip }) => {
     duration,
     image,
     price,
-    description,
-    departure_location,
     destination,
     contact_no,
-    package_details,
     _id
   } = trip;
 
   return (
-    <Link to={`/tripdetails/${_id}`} className="block group">
-      <div className='relative flex flex-col font-display bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-500 ease-out'>
+      <div className='relative flex flex-col font-display bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-500 ease-out cursor-pointer transform hover:scale-105'>
         {/* Image Container with Overlay */}
         <div className="relative overflow-hidden">
           <img 
@@ -86,15 +82,16 @@ const Trip = ({ trip }) => {
           </div>
 
           {/* CTA Button */}
-          <button className="btn btn-neutral btn-dash">
+           <Link to={`/tripdetails/${_id}`}>
+          <button className="btn btn-neutral btn-dash w-full">
             <span className="flex items-center justify-center">
               View Details
               <IoIosArrowForward></IoIosArrowForward>
             </span>
-          </button>
+          </button></Link>
         </div>
       </div>
-    </Link>
+
   );
 };
 
