@@ -55,9 +55,7 @@ const Trip = ({ trip }) => {
         {/* Content Section */}
         <div className="flex flex-col p-6 space-y-4">
           {/* Header */}
-          <div>
-            <p className="text-sm text-gray-500">{package_details}</p>
-          </div>
+         
           <div className="flex justify-between items-start">
             <div className="flex items-center gap-1">
                <p className="text-sm text-gray-500 flex items-center">
@@ -76,11 +74,7 @@ const Trip = ({ trip }) => {
             </div>
           </div>
 
-          {/* Description */}
-          <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
-            {description}
-          </p>
-
+          
           {/* Details Grid */}
           <div className="grid grid-cols-1 gap-3 pt-2">
             <div className="flex items-center justify-between text-sm">
